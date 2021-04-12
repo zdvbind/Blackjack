@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Card
+  attr_reader :price
+
   SUITS = %W[\u2660 \u2663 \u2666 \u2665].freeze
   RANKS = {
-    A: 1,
+    A: 11,
     '2': 2,
     '3': 3,
     '4': 4,
@@ -27,5 +29,9 @@ class Card
 
   def to_s
     @representation
+  end
+
+  def ace?
+    price == 11
   end
 end
