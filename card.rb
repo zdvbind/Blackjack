@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Card
-  SUITS = ["\u2660", "\u2663", "\u2666", "\u2665"].freeze
+  SUITS = %W[\u2660, \u2663, \u2666, \u2665].freeze
   RANKS = {
     'A': 1,
     '2': 2,
@@ -21,9 +21,11 @@ class Card
   def initialize(rank, suit)
     @rank = rank
     @suit = suit
+    @representation = "#{rank}#{suit}"
+    @price = RANKS[rank]
   end
 
   def to_s
-    _representation = "#{@rank}#{@suit}"
+    @representation
   end
 end
