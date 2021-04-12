@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Card
-  SUITS = %W[\u2660, \u2663, \u2666, \u2665].freeze
+  SUITS = %W[\u2660 \u2663 \u2666 \u2665].freeze
   RANKS = {
     'A': 1,
     '2': 2,
