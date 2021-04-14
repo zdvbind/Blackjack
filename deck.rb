@@ -19,7 +19,7 @@ class Deck
     deck.shuffle!.reverse!.shuffle!
   end
 
-  def take_a_card
+  def give_a_card
     deck.pop
   end
 

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Player
+  attr_reader :name, :bank
+
   def initialize(name, bank)
     @name = name
     @bank = bank
@@ -25,5 +27,22 @@ class Player
 
   def show_hand
     @hand
+  end
+
+  def not_enough_money?
+    bank < BlackJack::BET
+  end
+
+  def transfer_from(sum)
+    @bank -= sum
+  end
+
+  def transfer_to(sum)
+    @bank += sum
+  end
+
+  def drop_cards
+    @hand = []
+    @scores = 0
   end
 end
