@@ -5,3 +5,5 @@ require_relative 'deck'
 require_relative 'player'
 require_relative 'user_interface'
 require_relative 'blackjack'
+bj = BlackJack.new
+bj.start

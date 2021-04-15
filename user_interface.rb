@@ -1,4 +1,12 @@
+# frozen_string_literal: true
+
 class UserInterface
+  PLAYER_MENU = {
+    '1': :skip,
+    '2': :add,
+    '3': :show
+  }.freeze
+
   def show_information(inf)
     puts inf
   end
@@ -22,5 +30,39 @@ class UserInterface
 
   def show_balance(player)
     show_information("#{player.name} has #{player.bank} dollars")
+  end
+
+  def show_cards(player)
+    show_information("#{player.name}:")
+    player.show_hand.each do |card|
+      print card
+      print ' '
+    end
+    show_information("\n")
+  end
+
+  def show_scores(player)
+    puts "#{player.name}:  #{player.scores} scores."
+  end
+
+  def player_menu(full_hand, skipped)
+    puts 'Make your choise'
+    puts 'Skip your turn - 1' unless skipped
+    puts 'Add a card - 2' unless full_hand
+    puts 'Show cards - 3'
+    player_input = gets.chomp.to_sym
+    PLAYER_MENU[player_input]
+  end
+
+  def results
+    puts "#{player.name}: #{player.scores}"
+  end
+
+  def player_wins(player)
+    puts "#{player.name} wins !!!"
+  end
+
+  def tie
+    puts 'Tie happens'
   end
 end

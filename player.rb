@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :name, :bank
+  attr_reader :name, :bank, :hand, :scores
 
-  def initialize(name, bank)
+  SHIRT = 'X'
+
+  def initialize(name, bank, visible)
     @name = name
     @bank = bank
     @hand = []
     @scores = 0
+    @visible = visible
   end
 
   def take_a_card(card)
@@ -26,7 +29,11 @@ class Player
   end
 
   def show_hand
-    @hand
+    if @visible
+      @hand
+    else
+      @hand.map { SHIRT }
+    end
   end
 
   def not_enough_money?
@@ -44,5 +51,17 @@ class Player
   def drop_cards
     @hand = []
     @scores = 0
+  end
+
+  def full_hand?
+    hand.length == 3
+  end
+
+  def make_visible!
+    @visible = true
+  end
+
+  def make_unvisible!
+    @visible = false
   end
 end

@@ -6,7 +6,7 @@ class Deck
   attr_reader :deck
 
   def initialize
-    # Use native algoritm to create deck of cards. Need to use another algoritm.
+    # Use native algoritm to create deck of cards. Need to use another algoritm in future.
     @deck = []
     Card::SUITS.each do |suit|
       Card::RANKS.each_key do |rank|
@@ -21,10 +21,5 @@ class Deck
 
   def give_a_card
     deck.pop
-  end
-
-  # This method need to debug. Need to delete in future.
-  def show_deck
-    deck.map(&:to_s)
   end
 end
